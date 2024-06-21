@@ -2,12 +2,14 @@ from concurrent.futures import TimeoutError
 from google.cloud import pubsub_v1
 from typing import Union
 from fastapi import FastAPI
+import logging
 
 
 project_id = "gyucegok-alto"
 subscription_id = "atyeti-sub"
 # Number of seconds the subscriber should listen for messages
 timeout = 0.0
+logging.basicConfig(level=logging.INFO)
 
 app = FastAPI()
 @app.get("/")
@@ -23,10 +25,12 @@ subscription_path = subscriber.subscription_path(project_id, subscription_id)
 
 def callback(message: pubsub_v1.subscriber.message.Message) -> None:
     print(f"Received {message}.")
+    logging.info(f"Received {message}.")
     message.ack()
 
 streaming_pull_future = subscriber.subscribe(subscription_path, callback=callback)
 print(f"Listening for messages on {subscription_path}..\n")
+logging.info(f"Listening for messages on {subscription_path}..\n")
 
 # Wrap subscriber in a 'with' block to automatically call close() when done.
 

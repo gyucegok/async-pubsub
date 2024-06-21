@@ -15,6 +15,7 @@ spec:
       labels:
         app: async-pull
     spec:
+      serviceAccountName: async-pull
       containers:
         - name: async-pull
           image: europe-west1-docker.pkg.dev/gyucegok-alto/dock/async-pull:latest
