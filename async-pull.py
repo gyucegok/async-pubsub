@@ -1,11 +1,18 @@
 from concurrent.futures import TimeoutError
-from google.cloud import pubsub_v1
+from google.cloud import pubsub_v1from typing import Union
+from fastapi import FastAPI
 
 
 project_id = "gyucegok-alto"
 subscription_id = "atyeti-sub"
 # Number of seconds the subscriber should listen for messages
 timeout = 0.0
+
+app = FastAPI()
+@app.get("/")
+def read_root():
+    return {"Hello": "World"}
+
 
 
 subscriber = pubsub_v1.SubscriberClient()
