@@ -1,5 +1,6 @@
 from concurrent.futures import TimeoutError
-from google.cloud import pubsub_v1from typing import Union
+from google.cloud import pubsub_v1
+from typing import Union
 from fastapi import FastAPI
 
 
