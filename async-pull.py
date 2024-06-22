@@ -11,10 +11,10 @@ subscription_id = "atyeti-sub"
 timeout = 0.0
 logging.basicConfig(level=logging.INFO)
 
-app = FastAPI()
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
+#app = FastAPI()
+#@app.get("/")
+#def read_root():
+#    return {"Hello": "World"}
 
 
 
